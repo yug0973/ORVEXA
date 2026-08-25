@@ -1,0 +1,75 @@
+﻿# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Databases & Cache
+*.db
+*.db-journal
+*.sqlite
+solar_weather_cache.json
+active_tle_cache.txt
+aditya_trigger.json
+
+# Environment Secret Files (Critical Security)
+.env
+.env.local
+.env.*.local
+
+# IDE & OS Files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*~
+Thumbs.db
+Desktop.ini
+
+# Frontend Node Modules & Production Builds
+orvexa-frontend/node_modules/
+orvexa-frontend/dist/
+orvexa-frontend/.env.local
+orvexa-frontend/.env.*.local
+
+# Pytest cache
+.pytest_cache/
+
+# Task & scratch files
+task.md
+walkthrough.md
+
+# PDF docs (large)
+docs/*.pdf
+# Large 3D model files (>50MB - use Git LFS or external CDN)
+*.glb
+*.gltf

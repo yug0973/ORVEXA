@@ -1,0 +1,18 @@
+.text-block {
+  font-family: inherit;
+  color: inherit;
+  position: relative;
+  display: inline-block;
+}
+
+.scrambled-char {
+  will-change: transform, opacity;
+  display: inline-block;
+  white-space: pre;
+  transition: color 0.15s ease;
+}
+
+.scrambled-char.is-scrambling {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}

@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════════════
+   ORVEXA — DARK CHARCOAL + GLASSMORPHISM THEME
+   ══════════════════════════════════════════════════ */
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Obsidian black palette */
+  --bg-base:      #0a0a0a;
+  --bg-surface:   #0d0d0d;
+  --bg-elevated:  #111111;
+  /* Fully transparent glass */
+  --bg-card:       transparent;
+  --bg-card-hover: rgba(255,255,255,0.03);
+  --bg-sidebar:    #080808;
+
+  /* Glass layers — zero fill */
+  --glass-1: transparent;
+  --glass-2: rgba(255,255,255,0.02);
+  --glass-3: rgba(255,255,255,0.04);
+
+  /* Borders */
+  --border-subtle:  rgba(255,255,255,0.07);
+  --border-default: rgba(255,255,255,0.11);
+  --border-strong:  rgba(255,255,255,0.17);
+  --border-white:   rgba(255,255,255,0.22);
+
+  /* Text — clean white hierarchy */
+  --text-primary:   #ffffff;
+  --text-secondary: #c0c0c0;
+  --text-muted:     #808080;
+  --text-dim:       #444444;
+
+  /* Accents */
+  --accent-green:        #4ade80;
+  --accent-green-bg:     rgba(74,222,128,0.08);
+  --accent-green-border: rgba(74,222,128,0.20);
+
+  --accent-amber:        #fbbf24;
+  --accent-amber-bg:     rgba(251,191,36,0.08);
+  --accent-amber-border: rgba(251,191,36,0.20);
+
+  --accent-red:          #f87171;
+  --accent-red-bg:       rgba(248,113,113,0.08);
+  --accent-red-border:   rgba(248,113,113,0.20);
+
+  --accent-blue:         #60a5fa;
+  --accent-blue-bg:      rgba(96,165,250,0.08);
+  --accent-blue-border:  rgba(96,165,250,0.20);
+
+  --accent-cyan:    #22d3ee;
+  --accent-purple:  #c084fc;
+
+  color-scheme: dark;
+}
+
+/* ── BASE ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ── GLASSMORPHISM CARDS — pure transparent glass ── */
+.glassmorphism {
+  background: transparent;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow:
+    0 1px 0 0 rgba(255,255,255,0.07) inset,
+    0 0 0 0 transparent;
+}
+
+.glassmorphism-hover:hover {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.15);
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── BENTO CARD — fully transparent glass ────── */
+.bento-card {
+  background: transparent;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 12px;
+  padding: 16px 18px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
+  pointer-events: none;
+}
+
+.bento-card:hover {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.14);
+  transform: translateY(-1px);
+}
+
+/* ── BENTO LABELS (Mission Control // style) ──── */
+.bento-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bento-label::before {
+  content: '//';
+  color: var(--text-dim);
+  font-size: 9px;
+}
+
+.bento-value {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.bento-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── SECTION DIVIDER ──────────────────────────── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-subtle) 50%, transparent);
+  margin: 12px 0;
+}
+
+/* ── MONO LABEL ───────────────────────────────── */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ── STATUS INDICATORS ────────────────────────── */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 8px currentColor;
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.75);
+    box-shadow: 0 0 2px currentColor;
+  }
+}
+
+.pulse-red {
+  color: var(--accent-red);
+  background-color: var(--accent-red);
+  animation: blink 1.4s infinite ease-in-out;
+}
+
+.pulse-amber {
+  color: var(--accent-amber);
+  background-color: var(--accent-amber);
+  animation: blink 1.8s infinite ease-in-out;
+}
+
+.pulse-green {
+  color: var(--accent-green);
+  background-color: var(--accent-green);
+  animation: blink 2.2s infinite ease-in-out;
+}
+
+/* Status chips */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+.status-chip-green {
+  color: var(--accent-green);
+  background: var(--accent-green-bg);
+  border-color: var(--accent-green-border);
+}
+
+.status-chip-red {
+  color: var(--accent-red);
+  background: var(--accent-red-bg);
+  border-color: var(--accent-red-border);
+}
+
+.status-chip-amber {
+  color: var(--accent-amber);
+  background: var(--accent-amber-bg);
+  border-color: var(--accent-amber-border);
+}
+
+/* ── GLOW BORDERS ─────────────────────────────── */
+.glow-border-blue {
+  border: 1px solid var(--accent-blue-border);
+  box-shadow: 0 0 16px rgba(96,165,250,0.08);
+}
+
+.glow-border-red {
+  border: 1px solid var(--accent-red-border);
+  box-shadow: 0 0 16px rgba(248,113,113,0.06);
+}
+
+.glow-border-green {
+  border: 1px solid var(--accent-green-border);
+  box-shadow: 0 0 16px rgba(74,222,128,0.06);
+}
+
+/* ── MARQUEE ALERT TICKER ─────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ── SCROLLBAR ────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.10);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* ── SLIDE IN ─────────────────────────────────── */
+@keyframes slide-in {
+  from { opacity: 0; transform: scale(0.97) translateY(-6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── CHARCOAL PANEL BACKGROUND ────────────────── */
+/* Used directly on sidebar / topbar backgrounds */
+.charcoal-panel {
+  background: rgba(30,30,30,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ── TABLE ROWS ───────────────────────────────── */
+.glass-row {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.glass-row:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+/* ── CESIUM CREDIT & ION BANNER SUPPRESSION ────── */
+.cesium-widget-credits,
+.cesium-credit-expand-link,
+.cesium-credit-textContainer,
+.cesium-credit-imageContainer,
+.cesium-viewer-bottom,
+.cesium-viewer-timelineContainer,
+.cesium-viewer-animationContainer {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
