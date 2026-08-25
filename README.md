@@ -13,13 +13,13 @@
 
 > **Real-time 3D satellite tracking, collision avoidance, debris reentry prediction, and AI-powered space compliance — all in one platform.**
 
-[🚀 Live Demo](#) · [📖 Docs](#documentation) · [🐛 Issues](https://github.com/yug0973/ORVEXA/issues)
+[Issues](https://github.com/yug0973/ORVEXA/issues)
 
 </div>
 
 ---
 
-## 📸 Platform Screenshots
+## Screenshots
 
 ### 🌍 3D Globe — Live Satellite Tracking
 ![3D Globe Dashboard](docs/screenshots/01_globe_dashboard.png)
@@ -29,31 +29,37 @@
 
 ### ⚠️ Conjunction & Collision Risk Dashboard
 ![Conjunction Dashboard](docs/screenshots/02_conjunction_dashboard.png)
-> *ISS (ZARYA) vs COSMOS 2251 DEBRIS — 4.82×10⁻⁴ Pc, 8h TCA countdown, Delta-V maneuver simulator, B-Plane encounter geometry*
+> *ISS (ZARYA) vs COSMOS 2251 DEBRIS — 4.82x10-4 Pc, 8h TCA countdown, Delta-V maneuver simulator, B-Plane encounter geometry*
 
 ---
 
 ### 💥 Collision Replay — Historical Incident Reconstruction
 ![Collision Replay](docs/screenshots/06_collision_replay.png)
-> *3D reconstruction of the 2009 Iridium 33 × Cosmos 2251 collision — 789 km altitude, 11.70 km/s closing velocity, 23.63 GJ kinetic energy, generating 2,300+ debris fragments still tracked today*
+> *3D reconstruction of the 2009 Iridium 33 x Cosmos 2251 collision — 789 km altitude, 11.70 km/s closing velocity, 23.63 GJ kinetic energy, generating 2,300+ debris fragments still tracked today*
 
 ---
 
 ### 🔥 Reentry & Decay Console
 ![Reentry Map](docs/screenshots/03_reentry_map.png)
-> *CALSPHERE 1 reentry at 185.4 km — decay corridor map, fragment survival rate 18.5%, casualty risk 1.25×10⁻⁵ (NASA EVM model)*
+> *CALSPHERE 1 reentry at 185.4 km — decay corridor map, fragment survival rate 18.5%, casualty risk 1.25x10-5 (NASA EVM model)*
 
 ---
 
 ### ☀️ Solar Weather — Aditya-L1 Real-Time Feed
 ![Solar Weather](docs/screenshots/04_solar_weather.png)
-> *Live Aditya-L1 SoLEXS & HEL1OS X-ray spectrometer telemetry — F10.7 = 136 SFU, Ap = 5.8 nT, thermosphere drag multiplier 1.94×*
+> *Live Aditya-L1 SoLEXS & HEL1OS X-ray spectrometer telemetry — F10.7 = 136 SFU, Ap = 5.8 nT, thermosphere drag multiplier 1.94x*
 
 ---
 
 ### 🤖 Flight Copilot — AI Space Operations Assistant
 ![AI Copilot](docs/screenshots/05_ai_copilot.png)
 > *Air-gapped LLM assistant for conjunction hazards, B-plane risks, deorbit profiles — raw DB telemetry fallback when offline*
+
+---
+
+### 📋 Automated Compliance Hub — IN-SPACe Regulatory Filing
+![Compliance Hub](docs/screenshots/07_compliance_hub.png)
+> *6-stage automated pipeline: TLE Ingestion → KD-Tree Screening → Atmospheric Execution → IN-SPACe Documentation. Live agent log with CelesTrak API, SGP4 propagation, Monte Carlo corridor generation, and one-click filing to IN-SPACe / IADC*
 
 ---
 
@@ -80,9 +86,9 @@
 ```
 ORVEXA/
 ├── backend/                    # FastAPI Python backend
-│   ├── main.py                 # App entrypoint, CORS, routers
-│   ├── config.py               # Pydantic settings
-│   ├── routers/                # API route handlers
+│   ├── main.py
+│   ├── config.py
+│   ├── routers/
 │   │   ├── satellites.py       # TLE ingestion, CZML streaming
 │   │   ├── conjunctions.py     # Collision probability endpoints
 │   │   ├── reentry.py          # Decay prediction endpoints
@@ -93,7 +99,7 @@ ORVEXA/
 │       ├── compliance_generator.py
 │       └── swarm_orchestrator.py
 │
-├── orbital_mechanics/          # Physics computation layer
+├── orbital_mechanics/
 │   ├── propagator.py           # SGP4 / Skyfield
 │   ├── chan_pc.py              # Chan collision probability
 │   ├── foster_elrod.py        # Foster-Elrod Pc method
@@ -105,20 +111,20 @@ ORVEXA/
 ├── orvexa-frontend/            # Vite + React 19 + TypeScript
 │   └── src/
 │       ├── components/
-│       │   ├── OrbitGlobe.tsx          # CesiumJS 3D globe
-│       │   ├── BPlanePlotter.tsx       # B-plane geometry
+│       │   ├── OrbitGlobe.tsx
+│       │   ├── BPlanePlotter.tsx
 │       │   ├── CollisionSimulationPanel.tsx
-│       │   ├── ReentryMap.tsx          # Leaflet decay map
-│       │   ├── CopilotDrawer.tsx       # AI assistant panel
-│       │   └── Topbar.tsx              # Alerts + nav
+│       │   ├── ReentryMap.tsx
+│       │   ├── CopilotDrawer.tsx
+│       │   └── Topbar.tsx
 │       └── pages/
-│           ├── ConjunctionPage.tsx     # Collision dashboard
-│           ├── ReentryPage.tsx         # Decay console
-│           ├── SolarPage.tsx           # Space weather
-│           ├── CopilotPage.tsx         # AI chat
-│           └── CompliancePage.tsx      # Filings manager
+│           ├── ConjunctionPage.tsx
+│           ├── ReentryPage.tsx
+│           ├── SolarPage.tsx
+│           ├── CopilotPage.tsx
+│           └── CompliancePage.tsx
 │
-├── tests/                      # Pytest test suite (11 modules)
+├── tests/                      # Pytest suite (11 modules)
 ├── docs/screenshots/           # README screenshots
 └── docker-compose.yml
 ```
@@ -143,7 +149,7 @@ python backend/seed_db.py
 python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-> API: **http://localhost:8000** · Swagger: **http://localhost:8000/docs**
+> API: **http://localhost:8000** | Docs: **http://localhost:8000/docs**
 
 ### 3. Frontend
 
@@ -228,7 +234,7 @@ docker-compose up --build
 
 ## 👨‍💻 Author
 
-**Yug Brahmbhatt** · [@yug0973](https://github.com/yug0973) · yugbrahmbhatt000@gmail.com
+**Yug Brahmbhatt** | [@yug0973](https://github.com/yug0973) | yugbrahmbhatt000@gmail.com
 
 ---
 
@@ -240,8 +246,8 @@ MIT License
 
 <div align="center">
 
-**Built with ❤️ for the future of space safety**
+**Built with love for the future of space safety**
 
-⭐ Star this repo if you find it useful!
+Star this repo if you find it useful!
 
 </div>
